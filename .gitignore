@@ -1,0 +1,32 @@
+# Heavy artifacts live on the box (/ephemeral) and are re-downloadable — never in git
+weights/
+models/
+outputs/
+hf/
+episodes/*/stills/
+episodes/*/clips/
+episodes/*/voice/
+episodes/*/captions/
+episodes/*/final/
+*.safetensors
+*.ckpt
+*.gguf
+*.pt
+*.bin
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.wav
+*.mov
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets / local
+*.pem
+.hf_token
+.env.local

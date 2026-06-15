@@ -1,0 +1,3 @@
+# Consistent look / lens fragment — appended to every still prompt so lighting
+# and rendering stay coherent across shots.
+photorealistic portrait, shot on 50mm lens, soft natural window light, shallow depth of field, warm rustic Romanian village home interior, fine skin texture detail, subtle film grain, candid documentary photography, 9:16 vertical framing

@@ -1,0 +1,6 @@
+# Bunica — locked physical identity for the founder image.
+# This description DEFINES who she is; keep it stable across every reel.
+# Post-LoRA, this collapses to the trigger token: bunicaX
+#
+# (Single-line prompt fragment below, used by scripts/gen_image.py)
+a 68 year old Romanian peasant grandmother, warm weathered friendly face with deep laugh lines, kind hazel eyes, high cheekbones, soft rounded chin, silver-grey hair parted in the middle and tied back under a floral headscarf with a few loose wisps, small gold cross necklace, wearing a traditional Romanian folk costume - white linen "ie" blouse with red and black geometric embroidery on the shoulders and sleeves, a dark woven "catrinta" wrap skirt, and a wool apron
