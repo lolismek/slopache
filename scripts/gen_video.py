@@ -55,10 +55,13 @@ def patch(wf, args):
             ins["text"] = args.negative
         if ct == "LoadImage":
             ins["image"] = args.image
-        if ct == "WanImageToVideo":
+        if ct == "LoadAudio" and args.audio:
+            ins["audio"] = args.audio
+        if ct in ("WanImageToVideo", "WanSoundImageToVideo"):
             ins["width"], ins["height"], ins["length"] = args.width, args.height, args.length
-        if "noise_seed" in ins:
-            ins["noise_seed"] = args.seed
+        for k in ("seed", "noise_seed"):   # KSampler uses seed; KSamplerAdvanced uses noise_seed
+            if k in ins:
+                ins[k] = args.seed
         if ct == "SaveVideo":
             ins["filename_prefix"] = args.out
     return wf
@@ -68,6 +71,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workflow", default="workflows/wan22_i2v_api.json")
     ap.add_argument("--image", required=True, help="filename in ComfyUI/input/")
+    ap.add_argument("--audio", default=None, help="audio filename in ComfyUI/input/ (S2V)")
     ap.add_argument("--prompt", required=True)
     ap.add_argument("--negative", default=None)
     ap.add_argument("--out", default="i2v")
