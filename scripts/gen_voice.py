@@ -11,8 +11,26 @@ Usage (in /ephemeral/tts-venv):
 """
 import argparse
 import os
+import re
 
 os.environ.setdefault("COQUI_TOS_AGREED", "1")  # accept CPML non-commercial TOS headlessly
+
+
+def install_ro_tokenizer_patch():
+    """coqui-tts's XTTS tokenizer raises NotImplementedError for 'ro'. The
+    eduardm finetune is trained for Romanian; route 'ro' through light
+    normalization (cedilla->comma-below, lowercase, collapse whitespace) so the
+    multilingual BPE can encode it. Sufficient for text without numbers/abbrevs."""
+    from TTS.tts.layers.xtts import tokenizer as tk
+    orig = tk.VoiceBpeTokenizer.preprocess_text
+
+    def preprocess_text(self, txt, lang):
+        if lang == "ro":
+            t = txt.replace("ş", "ș").replace("ţ", "ț")
+            return re.sub(r"\s+", " ", t.lower()).strip()
+        return orig(self, txt, lang)
+
+    tk.VoiceBpeTokenizer.preprocess_text = preprocess_text
 
 
 def main():
@@ -30,6 +48,8 @@ def main():
     args = ap.parse_args()
 
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+    if args.language == "ro":
+        install_ro_tokenizer_patch()
     from TTS.api import TTS
     if args.model_path:
         cfg = args.config_path or os.path.join(args.model_path, "config.json")
