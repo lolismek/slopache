@@ -18,18 +18,27 @@ os.environ.setdefault("COQUI_TOS_AGREED", "1")  # accept CPML non-commercial TOS
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--text", required=True)
-    ap.add_argument("--speaker", default="Ana Florence", help="built-in XTTS speaker")
+    ap.add_argument("--speaker", default=None, help="built-in XTTS speaker name")
+    ap.add_argument("--speaker_wav", default=None, help="reference wav to clone (overrides --speaker)")
     ap.add_argument("--language", default="ro")
     ap.add_argument("--out", default="voice.wav")
-    ap.add_argument("--model", default="tts_models/multilingual/multi-dataset/xtts_v2")
+    ap.add_argument("--model", default="tts_models/multilingual/multi-dataset/xtts_v2",
+                    help="HF model id (base XTTS, no Romanian)")
+    ap.add_argument("--model_path", default=None, help="local finetune dir (e.g. /ephemeral/xtts-ro)")
+    ap.add_argument("--config_path", default=None, help="local finetune config.json")
     ap.add_argument("--device", default="cuda")
     args = ap.parse_args()
 
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     from TTS.api import TTS
-    tts = TTS(args.model).to(args.device)
-    tts.tts_to_file(text=args.text, speaker=args.speaker,
-                    language=args.language, file_path=args.out)
+    if args.model_path:
+        cfg = args.config_path or os.path.join(args.model_path, "config.json")
+        tts = TTS(model_path=args.model_path, config_path=cfg).to(args.device)
+    else:
+        tts = TTS(args.model).to(args.device)
+
+    kw = {"speaker_wav": args.speaker_wav} if args.speaker_wav else {"speaker": args.speaker}
+    tts.tts_to_file(text=args.text, language=args.language, file_path=args.out, **kw)
     print(f"[voice] wrote {args.out}")
 
 
