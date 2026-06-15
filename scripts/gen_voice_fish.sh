@@ -28,7 +28,7 @@ else
     --prompt-tokens fake.npy --checkpoint-path "$CKPT"
 fi
 
-CODES="$(ls -t output/codes_*.npy codes_*.npy 2>/dev/null | head -1)"
+CODES="$(ls -t output/codes_*.npy 2>/dev/null | head -1 || true)"
 [ -n "$CODES" ] || { echo "[fish] ERROR: no codes file produced"; exit 1; }
 
 echo "[fish] (3/3) semantic tokens ($CODES) -> waveform"
