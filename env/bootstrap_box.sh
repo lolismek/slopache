@@ -22,8 +22,10 @@ cd "$COMFY_DIR"
 source venv/bin/activate
 pip install -q --upgrade pip wheel
 
-echo "[bootstrap] torch (CUDA 12.4 wheels)"
-pip install -q torch torchvision --index-url https://download.pytorch.org/whl/cu124
+echo "[bootstrap] torch trio (CUDA 12.4 wheels) — install all three together so"
+echo "            ComfyUI's requirements.txt doesn't pull a CUDA-13 torchaudio."
+pip install -q torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 \
+  --index-url https://download.pytorch.org/whl/cu124
 
 echo "[bootstrap] ComfyUI requirements + hf hub"
 pip install -q -r requirements.txt
