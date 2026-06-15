@@ -9,6 +9,8 @@ TTS_VENV="${TTS_VENV:-/ephemeral/tts-venv}"
 # shellcheck disable=SC1091
 source "$TTS_VENV/bin/activate"
 pip install -q --upgrade pip wheel
-echo "[tts] installing coqui-tts (pulls torch + XTTS deps)"
+echo "[tts] installing torch + torchaudio (CUDA 12.4)"
+pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+echo "[tts] installing coqui-tts"
 pip install -q coqui-tts
-python -c "import TTS; print('[tts] coqui-tts', TTS.__version__)"
+python -c "import torch, TTS; print('[tts] coqui-tts', TTS.__version__, '| torch', torch.__version__, '| cuda', torch.cuda.is_available())"
