@@ -13,4 +13,7 @@ echo "[tts] installing torch + torchaudio (CUDA 12.4)"
 pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 echo "[tts] installing coqui-tts"
 pip install -q coqui-tts
+# coqui-tts 0.27 declares transformers>=4.57 but its tortoise layer breaks on
+# transformers 5.x — pin to the 4.57.x window.
+pip install -q "transformers>=4.57,<5.0"
 python -c "import torch, TTS; print('[tts] coqui-tts', TTS.__version__, '| torch', torch.__version__, '| cuda', torch.cuda.is_available())"
