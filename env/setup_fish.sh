@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# Runs ON the box. Installs Fish Audio S2 Pro (2026 SOTA TTS, strong Romanian) in
+# Runs ON the box. Installs Fish Audio S2 Pro (2026, top-tier audio fidelity) in
 # its OWN venv (torch 2.8 — different from ComfyUI/XTTS venvs). Downloads the
 # ~10GB s2-pro weights. License: Fish Audio Research License (non-commercial OK).
+# WARNING: Romanian is NOT in s2-pro's trained language list (model card lists
+# ~38 langs incl. it/es/fr but NOT ro). It accepts ă/â/î but renders them with
+# Romance-neighbor phonetics — wrong vowels. Use XTTS-ro for correct Romanian.
 set -euo pipefail
 FISH_DIR="${FISH_DIR:-/ephemeral/fish-speech}"
 FISH_VENV="${FISH_VENV:-/ephemeral/fish-venv}"
