@@ -1,0 +1,21 @@
+# Fuller camera-orbit set for the fal Multiple-Angles LoRA (Qwen-Image-Edit-2511).
+# Format:  label | <sks> [azimuth] [elevation] [distance]   ('<sks>' required)
+# Reliable azimuths only (front / front-quarter / side); back views omitted.
+front_eye_m   | <sks> front view eye-level shot medium shot
+front_low_m   | <sks> front view low-angle shot medium shot
+front_high_m  | <sks> front view high-angle shot medium shot
+frq_eye_m     | <sks> front-right quarter view eye-level shot medium shot
+frq_low_m     | <sks> front-right quarter view low-angle shot medium shot
+frq_high_m    | <sks> front-right quarter view high-angle shot medium shot
+flq_eye_m     | <sks> front-left quarter view eye-level shot medium shot
+flq_low_m     | <sks> front-left quarter view low-angle shot medium shot
+flq_high_m    | <sks> front-left quarter view high-angle shot medium shot
+right_eye_m   | <sks> right side view eye-level shot medium shot
+right_high_m  | <sks> right side view high-angle shot medium shot
+left_eye_m    | <sks> left side view eye-level shot medium shot
+left_high_m   | <sks> left side view high-angle shot medium shot
+front_eye_cu  | <sks> front view eye-level shot close-up
+frq_eye_cu    | <sks> front-right quarter view eye-level shot close-up
+flq_eye_cu    | <sks> front-left quarter view eye-level shot close-up
+right_eye_cu  | <sks> right side view eye-level shot close-up
+left_eye_cu   | <sks> left side view eye-level shot close-up

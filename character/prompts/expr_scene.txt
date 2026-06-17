@@ -1,0 +1,14 @@
+# Expression / scene variety edits, run through qwen_edit_clean_api.json (no camera
+# LoRA) on the founder. Camera/viewpoint variety is handled separately by the
+# multi-angle LoRA; this file adds expression + setting diversity for the LoRA set.
+# Format:  label | instruction   (every one keeps identity + wardrobe + Pixar style)
+thoughtful | Keep the same woman, same clothing, same 3D Pixar style. Give her a thoughtful pensive expression looking slightly off camera.
+wink       | Keep the same woman, same clothing, same 3D Pixar style. Give her a playful wink and a small grin.
+proud      | Keep the same woman, same clothing, same 3D Pixar style. Give her a proud beaming smile.
+neutral    | Keep the same woman, same clothing, same 3D Pixar style. Give her a relaxed neutral expression with lips closed, looking at the camera.
+wave       | Keep the same woman, same clothing, same 3D Pixar style. Show her waving warmly at the camera with one hand, big friendly smile.
+mug        | Keep the same woman, same clothing, same 3D Pixar style. Show her holding a steaming mug of tea in both hands near her chest.
+garden     | Keep the same woman, same clothing, same 3D Pixar style. Place her in a sunny flower garden with golden-hour light.
+kitchen    | Keep the same woman, same clothing, same 3D Pixar style. Place her in a cozy rustic kitchen with warm hanging lights behind her.
+market     | Keep the same woman, same clothing, same 3D Pixar style. Place her at an outdoor village market stall in bright daylight.
+evening    | Keep the same woman, same clothing, same 3D Pixar style. Place her in a warm evening interior lit by a single lamp, soft contented smile.

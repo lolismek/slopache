@@ -1,0 +1,43 @@
+# Qwen-Image-Edit instructions to turn the founder image into a LoRA dataset.
+# Format:  label | instruction
+# Every instruction MUST preserve identity: same woman, same face, same red floral
+# headscarf + white embroidered ie blouse, same 3D Pixar animated render style.
+# We vary ONLY angle / expression / framing / setting / light so the LoRA learns
+# her IDENTITY, not one pose. Keep wardrobe consistent across all of them.
+#
+# --- camera angle (same neutral kitchen, gentle smile) ---
+angle_front      | Keep the same woman, same clothing, same 3D Pixar style. Show her front-facing, head and shoulders, looking at the camera with a gentle smile, soft warm window light.
+angle_34left     | Keep the same woman, clothing and Pixar style. Turn her to a three-quarter left view, head and shoulders, gentle smile, soft window light.
+angle_34right    | Keep the same woman, clothing and Pixar style. Turn her to a three-quarter right view, head and shoulders, calm friendly expression, soft window light.
+angle_profileL   | Keep the same woman, clothing and Pixar style. Show a left profile view of her face and shoulders, neutral expression, soft light.
+angle_low        | Keep the same woman, clothing and Pixar style. Slight low camera angle looking up at her, head and shoulders, warm confident expression.
+angle_high       | Keep the same woman, clothing and Pixar style. Slight high camera angle looking down at her, head and shoulders, soft smile.
+#
+# --- expression (front-ish, neutral kitchen) ---
+expr_laugh       | Keep the same woman, clothing and Pixar style. Give her a warm open-mouthed laugh, eyes crinkled, head and shoulders, front-facing.
+expr_surprise    | Keep the same woman, clothing and Pixar style. Give her a comic surprised expression, raised eyebrows, mouth open, head and shoulders.
+expr_thoughtful  | Keep the same woman, clothing and Pixar style. Give her a thoughtful pensive expression looking slightly off camera, head and shoulders.
+expr_wink        | Keep the same woman, clothing and Pixar style. Give her a playful wink and a small grin, head and shoulders, front-facing.
+expr_neutral     | Keep the same woman, clothing and Pixar style. Give her a relaxed neutral expression, lips closed, looking at the camera, head and shoulders.
+expr_proud       | Keep the same woman, clothing and Pixar style. Give her a proud beaming smile, head and shoulders, front-facing.
+#
+# --- framing / body ---
+frame_waistup    | Keep the same woman, clothing and Pixar style. Waist-up shot, hands clasped in front of her, warm smile, rustic kitchen background.
+frame_full       | Keep the same woman, clothing and Pixar style. Full body standing shot in a Romanian village yard, gentle smile, natural daylight.
+frame_seated     | Keep the same woman, clothing and Pixar style. Seated at a wooden kitchen table, waist-up, hands on the table, soft indoor light.
+frame_closeup    | Keep the same woman, clothing and Pixar style. Tight close-up of her face, gentle smile, soft detailed light on the skin.
+#
+# --- setting / light ---
+set_garden       | Keep the same woman, clothing and Pixar style. Place her in a sunny flower garden, head and shoulders, golden hour light, gentle smile.
+set_kitchen_warm | Keep the same woman, clothing and Pixar style. Cozy rustic kitchen with warm hanging lights behind her, head and shoulders, soft smile.
+set_porch        | Keep the same woman, clothing and Pixar style. Standing on a wooden village porch, soft overcast daylight, waist-up, calm expression.
+set_market       | Keep the same woman, clothing and Pixar style. At an outdoor village market stall, head and shoulders, bright daylight, friendly smile.
+set_livingroom   | Keep the same woman, clothing and Pixar style. In a homely living room with a patterned rug, head and shoulders, warm lamp light.
+set_window       | Keep the same woman, clothing and Pixar style. Standing by a bright window, soft side light across her face, three-quarter view, gentle smile.
+set_evening      | Keep the same woman, clothing and Pixar style. Warm evening interior lit by a single lamp, head and shoulders, soft contented smile.
+#
+# --- light gentle activity (hands visible, keeps face central) ---
+act_mug          | Keep the same woman, clothing and Pixar style. Holding a steaming mug of tea in both hands near her chest, waist-up, warm smile.
+act_dough        | Keep the same woman, clothing and Pixar style. Kneading dough on a floured kitchen table, waist-up, focused gentle expression.
+act_wave         | Keep the same woman, clothing and Pixar style. Waving warmly at the camera with one hand, head and shoulders, big friendly smile.
+act_apron        | Keep the same woman, clothing and Pixar style. Wiping her hands on her apron, waist-up, soft kitchen light, gentle smile.

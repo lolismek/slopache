@@ -1,0 +1,14 @@
+# Camera-orbit prompts for the fal Multiple-Angles LoRA (Qwen-Image-Edit-2511).
+# Format:  label | <sks> [azimuth] [elevation] [distance]
+# The "<sks>" trigger is REQUIRED; order is azimuth, elevation, distance.
+# Test set: front -> 3/4 -> side range + a couple elevations/distances.
+# Back views are deliberately omitted (research: model must hallucinate unseen
+# geometry there, identity/quality degrade).
+front_eye      | <sks> front view eye-level shot medium shot
+fr_quarter_eye | <sks> front-right quarter view eye-level shot medium shot
+right_eye      | <sks> right side view eye-level shot medium shot
+fl_quarter_eye | <sks> front-left quarter view eye-level shot medium shot
+left_eye       | <sks> left side view eye-level shot medium shot
+front_low      | <sks> front view low-angle shot medium shot
+front_high     | <sks> front view high-angle shot medium shot
+fr_quarter_cu  | <sks> front-right quarter view eye-level shot close-up
