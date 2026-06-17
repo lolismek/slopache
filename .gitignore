@@ -30,3 +30,4 @@ venv/
 *.pem
 .hf_token
 .env.local
+.env
