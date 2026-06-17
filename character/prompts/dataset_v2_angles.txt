@@ -1,0 +1,10 @@
+# v2 camera angles (multi-angle LoRA on the founder). Costume carried by the input
+# image; '<sks>' trigger required. 8 viewpoints across azimuth/elevation/distance.
+front_eye  | <sks> front view eye-level shot medium shot
+frq_eye    | <sks> front-right quarter view eye-level shot medium shot
+flq_eye    | <sks> front-left quarter view eye-level shot medium shot
+right_eye  | <sks> right side view eye-level shot medium shot
+left_eye   | <sks> left side view eye-level shot medium shot
+front_low  | <sks> front view low-angle shot medium shot
+front_high | <sks> front view high-angle shot medium shot
+frq_cu     | <sks> front-right quarter view eye-level shot close-up

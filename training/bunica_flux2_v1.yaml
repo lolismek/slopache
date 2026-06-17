@@ -1,0 +1,68 @@
+# ai-toolkit FLUX.2 character-LoRA config for "Bunica Influenceriță".
+# Runs ON the brev A100 80GB box. Paths are box-absolute (REMOTE_ROOT).
+#
+# A100 NOTE: the A100 is CUDA compute capability 8.0 -> NO native FP8 tensor
+# cores. ai-toolkit's `quantize: true` uses quanto qfloat8, which STORES weights
+# in fp8 but COMPUTES in bf16 (software path) -> works on A100. Do NOT enable any
+# hardware-fp8 / transformer-engine training path here.
+job: extension
+config:
+  name: bunica_flux2_v1
+  process:
+    - type: sd_trainer
+      training_folder: /ephemeral/slopache/output/lora
+      device: cuda:0
+      trigger_word: ohwxbunica
+      network:
+        type: lora
+        linear: 16          # rank; bump to 32 if identity is weak after v1
+        linear_alpha: 16
+      save:
+        dtype: float16
+        save_every: 250
+        max_step_saves_to_keep: 6
+      datasets:
+        - folder_path: /ephemeral/slopache/character/lora_dataset
+          caption_ext: txt
+          caption_dropout_rate: 0.05   # tiny dropout -> trigger generalizes
+          shuffle_tokens: false        # keep trigger first (keep_tokens=1 effect)
+          cache_latents_to_disk: true
+          resolution: [768, 1024]
+      train:
+        batch_size: 1
+        steps: 2000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false      # Mistral-24B frozen -> saves huge VRAM
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        dtype: bf16
+      model:
+        name_or_path: black-forest-labs/FLUX.2-dev
+        arch: flux2
+        quantize: true        # quanto fp8 weight storage, bf16 compute (A100-safe)
+        quantize_te: true     # quantize the 24B Mistral text encoder too
+      sample:
+        sampler: flowmatch
+        sample_every: 250
+        width: 1024
+        height: 1024
+        guidance_scale: 4
+        sample_steps: 20
+        seed: 42
+        walk_seed: true
+        neg: ""
+        prompts:
+          # identity in an UNSEEN scene (not in the training set):
+          - "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a white embroidered Romanian ie blouse and a red floral headscarf, riding a modern city bus, a waist-up shot, smiling at the camera"
+          # accessory + selfie pose (tests face<->accessory decoupling):
+          - "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing oversized white sunglasses, taking a selfie with a smartphone, a close-up shot, confident grin"
+          # OUTFIT CHANGE (costume is captioned -> should be promptable):
+          - "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a modern red puffer jacket and jeans, standing in a supermarket aisle, a full-body shot, neutral expression"
+          # expression + 3/4 angle generalization:
+          - "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a white embroidered Romanian ie blouse and a red floral headscarf, three-quarter view, laughing warmly, golden hour light"
+meta:
+  name: bunica_flux2_v1
+  version: '1.0'

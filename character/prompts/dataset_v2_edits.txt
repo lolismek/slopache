@@ -1,0 +1,30 @@
+# v2 dataset: single-pass scene edits (clean Qwen-Edit). Each line is a UNIQUE
+# background x framing x expression x lighting combo so nuisance variables are
+# DECORRELATED from identity. Wardrobe is PINNED in every prompt so her signature
+# costume stays consistent (only details should drift, not the garments).
+# The last 3 are ACCESSORY variants (sunglasses/glasses/shawl) that deliberately
+# add an accessory on top of the costume to teach face<->accessory decoupling.
+# Format:  label | instruction
+#
+# --- scenes (costume pinned, varied bg/framing/expression/light) ---
+kitchen_proud   | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in a cozy rustic kitchen with warm hanging lights, waist-up shot, proud beaming smile.
+garden_laugh    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in a sunny flower garden in golden-hour light, full-body shot, warm open-mouthed laugh.
+market_surprise | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her at a busy outdoor village market stall in bright daylight, waist-up shot, comic surprised expression.
+porch_wave      | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her on a wooden village porch in soft overcast daylight, full-body shot, waving at the camera with a friendly smile.
+snow_content    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her on a snowy village street in cool blue daylight, waist-up shot, content closed-mouth smile.
+livingroom_think| Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in a homely living room with warm lamp light, close-up, thoughtful expression looking off camera.
+field_gentle    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in an autumn field in hazy afternoon sun, full-body shot, gentle smile.
+courtyard_neutral| Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in an old stone church courtyard in soft daylight, waist-up shot, relaxed neutral expression.
+balcony_wink    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her on a balcony with a town behind her in warm evening light, waist-up shot, playful wink and grin.
+studio_proud    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her against a plain warm grey studio backdrop in soft studio light, close-up, proud smile.
+lake_look       | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her at a lakeside at dawn in bright soft light, full-body shot, one hand shading her eyes looking into the distance.
+vineyard_grapes | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in sunny vineyard rows, waist-up shot, holding a bunch of grapes and smiling.
+bakery_smile    | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in a warm village bakery interior, close-up, gentle smile looking at the camera.
+fireplace_cozy  | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her in a room with a lit fireplace and firelight glow, waist-up shot, cozy content expression.
+terrace_laugh   | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her on a rooftop terrace in late afternoon light, close-up, laughing.
+station_basket  | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse, red floral headscarf, and dark catrinta skirt. Place her on a rustic train platform in daylight, full-body shot, holding a wicker basket with a calm smile.
+#
+# --- accessory variants (face invariant, accessory added) ---
+acc_sunglasses  | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse and red floral headscarf, plus oversized white sunglasses. Place her in a sunny village yard, waist-up shot, arms crossed in a confident cool pose.
+acc_glasses     | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse and red floral headscarf, plus small reading glasses perched on her nose. Place her in a cozy kitchen, close-up, gentle smile.
+acc_shawl       | Keep the same woman, same face, same 3D Pixar style. She wears her white embroidered ie blouse and red floral headscarf, with a heavy knitted wool shawl wrapped over her shoulders. Place her in a snowy doorway, waist-up shot, warm smile.
