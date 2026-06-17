@@ -14,8 +14,9 @@ across episodes.
 - **Character consistency is the #1 priority** — the face must be identical across
   every reel. This is the account's whole moat.
 - **Non-commercial use assumed** (unlocks FLUX.2-dev and CPML-licensed XTTS weights).
-- **Single GPU box:** one **A100 80 GB** at brev instance `visible-rose-reptile`
-  (already logged in). Everything runs on this one warm box — no two-machine split.
+- **Single GPU box:** one **A100 80 GB** at brev instance `zany-brown-owl`
+  (resolved dynamically by `infra/remote.sh`). Everything runs on this one warm box
+  — no two-machine split. **Current build status & insights: see `docs/BUILD_LOG.md`.**
 - **Orchestration:** ComfyUI-first (manual node graphs), with scripted glue only for
   the deterministic tail (voice, captions, ffmpeg assembly).
 - **Review:** approve-each-shot — human reviews/regenerates stills and clips before

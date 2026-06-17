@@ -14,12 +14,15 @@ H   = int(sys.argv[4]) if len(sys.argv) > 4 else 768
 LEN = int(sys.argv[5]) if len(sys.argv) > 5 else 81
 SEED= int(sys.argv[6]) if len(sys.argv) > 6 else 42
 
-POS = ("A 3D Pixar-style elderly Romanian grandmother sitting on a city bus. "
+import os
+POS = os.environ.get("POS_PROMPT",
+      ("A 3D Pixar-style elderly Romanian grandmother sitting on a city bus. "
        "She waves at the camera with one hand, smiles warmly and laughs, leaning "
        "slightly forward. The city street scrolls past the bus window behind her. "
-       "Gentle handheld camera motion, natural lively movement.")
-NEG = ("static, still, frozen, motionless, blurry, low quality, distorted, "
-       "deformed face, extra fingers, watermark, text, jpeg artifacts, oversaturated")
+       "Gentle handheld camera motion, natural lively movement."))
+NEG = os.environ.get("NEG_PROMPT",
+      ("static, still, frozen, motionless, blurry, low quality, distorted, "
+       "deformed face, extra fingers, watermark, text, jpeg artifacts, oversaturated"))
 
 wf = {
  "1":  {"class_type":"LoadImage","inputs":{"image":img}},
