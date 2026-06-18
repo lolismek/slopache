@@ -1,0 +1,88 @@
+{
+  "episode": "ep02_influencer",
+  "title": "Morning routine de soft life (la țară)",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Azi vă arăt morning routine-ul meu de soft life. La țară.",
+      "image_prompt": "holding a smartphone clipped to a small selfie ring-light and recording herself, standing in a cozy rustic village kitchen, waist-up front-facing shot, looking into the camera with an excited influencer smile",
+      "motion_prompt": "she talks energetically to the camera with gentle head tilts and small hand gestures, warm natural smile, subtle stable body movement, framing steady"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Primul pas: ne trezim la cinci, că vaca nu așteaptă like-uri.",
+      "image_prompt": "a proud rooster crowing on a weathered wooden fence at dawn, misty Romanian village yard behind, low close-up shot, dew and soft mist in the air",
+      "motion_prompt": "the rooster flaps its wings and crows, head bobbing, mist drifting slowly past, steady camera, natural farmyard motion",
+      "sfx": "a rooster crowing loudly at dawn with faint farmyard birds in the background"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Skincare doar cu produse organice, direct de la vaca Florica. Smântâna e noul retinol.",
+      "image_prompt": "holding a small ceramic jar of thick white sour cream up near her face and dabbing a little onto her cheek with a fingertip, in the village kitchen, waist-up front-facing shot, playful expression",
+      "motion_prompt": "she dabs a little cream on her cheek with a fingertip and smiles at the camera, playful natural head movement, subtle coherent motion"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Un strat gros, fetelor. Glow natural, fără filtru.",
+      "image_prompt": "extreme close-up of the same small ceramic jar of thick white sour cream on a rustic wooden table, a wooden spoon scooping a thick glossy dollop, shallow depth of field",
+      "motion_prompt": "the wooden spoon slowly scoops a thick dollop of sour cream from the jar, the cream stretching and folding, shallow focus, slow gentle motion",
+      "sfx": {"prompt": "soft creamy squish of a spoon scooping thick sour cream, close up", "volume": 0.6}
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Fit check! Ie cusută de mâna mea, batic vintage din '67. Sustainable, draga mea.",
+      "image_prompt": "standing on a rustic wooden village porch, proudly presenting her embroidered blouse with both hands like a fashion influencer, waist-up front-facing shot, confident playful pose",
+      "motion_prompt": "she presents her blouse with both hands and does a small proud turn toward the camera, then a quick wink, smooth coherent natural motion"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Catwalk pe ulița mare. Parisul să stea jos.",
+      "image_prompt": "several plump hens strutting and scattering down a dusty village dirt lane, low ground-level wide shot framed like a fashion runway, warm dust kicking up in the golden light",
+      "motion_prompt": "the hens strut and scatter down the lane, wings flapping, soft dust rising, lively but coherent natural motion, steady low camera",
+      "sfx": "several chickens clucking and flapping their wings in a farmyard"
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Și acum, un mic hot girl walk. Până la fântână, după apă. Zece mii de pași.",
+      "image_prompt": "carrying a wooden yoke with two empty buckets over her shoulder, a sunlit village path with wooden houses behind her, waist-up front-facing shot, cheerful and energetic, gesturing down the path",
+      "motion_prompt": "she gestures down the sunny path and takes a confident step forward with the buckets, cheerful, smooth coherent body motion"
+    },
+    {
+      "id": 8,
+      "type": "broll",
+      "voiceover": "Hidratare, direct de la sursă. Fără microplastice.",
+      "image_prompt": "an old stone village well with a wooden bucket being drawn up on a rope, sparkling water dripping from the bucket, close-up, droplets catching the golden light",
+      "motion_prompt": "the wooden bucket rises steadily from the well, water sloshing and dripping, droplets sparkling, slow satisfying coherent motion",
+      "sfx": "an old wooden well bucket creaking on a rope with water sloshing and dripping"
+    },
+    {
+      "id": 9,
+      "type": "talking",
+      "line": "Asta a fost, fetelor! Dați like, dați share, și dați la găini niște grăunțe. Pupici!",
+      "image_prompt": "in the cozy village kitchen, waving goodbye and blowing a kiss to the camera, waist-up front-facing shot, big warm affectionate smile",
+      "motion_prompt": "she waves with one hand and blows a kiss to the camera, warm affectionate smile, gentle coherent natural motion"
+    }
+  ]
+}

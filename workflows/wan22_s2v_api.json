@@ -1,7 +1,7 @@
 {
-  "1": {"class_type": "UNETLoader", "inputs": {"unet_name": "wan2.2_s2v_14B_fp8_scaled.safetensors", "weight_dtype": "default"}, "_meta": {"title": "UNET S2V"}},
+  "1": {"class_type": "UNETLoader", "inputs": {"unet_name": "wan2.2_s2v_14B_bf16.safetensors", "weight_dtype": "default"}, "_meta": {"title": "UNET S2V"}},
   "2": {"class_type": "ModelSamplingSD3", "inputs": {"model": ["1", 0], "shift": 8.0}, "_meta": {"title": "Shift"}},
-  "3": {"class_type": "CLIPLoader", "inputs": {"clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors", "type": "wan"}, "_meta": {"title": "Load CLIP (umt5)"}},
+  "3": {"class_type": "CLIPLoader", "inputs": {"clip_name": "umt5_xxl_fp16.safetensors", "type": "wan"}, "_meta": {"title": "Load CLIP (umt5)"}},
   "4": {"class_type": "VAELoader", "inputs": {"vae_name": "wan_2.1_vae.safetensors"}, "_meta": {"title": "Load VAE"}},
   "5": {"class_type": "AudioEncoderLoader", "inputs": {"audio_encoder_name": "wav2vec2_large_english_fp16.safetensors"}, "_meta": {"title": "Audio Encoder"}},
   "6": {"class_type": "LoadAudio", "inputs": {"audio": "voice.wav"}, "_meta": {"title": "Load Audio"}},
@@ -10,7 +10,7 @@
   "9": {"class_type": "CLIPTextEncode", "inputs": {"text": "PLACEHOLDER_PROMPT", "clip": ["3", 0]}, "_meta": {"title": "POSITIVE_PROMPT"}},
   "10": {"class_type": "CLIPTextEncode", "inputs": {"text": "low quality, blurry, distorted, deformed face, warping, flicker, jpeg artifacts, watermark, text", "clip": ["3", 0]}, "_meta": {"title": "NEGATIVE_PROMPT"}},
   "11": {"class_type": "WanSoundImageToVideo", "inputs": {"positive": ["9", 0], "negative": ["10", 0], "vae": ["4", 0], "width": 480, "height": 832, "length": 64, "batch_size": 1, "audio_encoder_output": ["7", 0], "ref_image": ["8", 0]}, "_meta": {"title": "Wan Sound Image To Video"}},
-  "12": {"class_type": "KSampler", "inputs": {"model": ["2", 0], "seed": 0, "steps": 20, "cfg": 6.0, "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0, "positive": ["11", 0], "negative": ["11", 1], "latent_image": ["11", 2]}, "_meta": {"title": "Sampler"}},
+  "12": {"class_type": "KSampler", "inputs": {"model": ["2", 0], "seed": 0, "steps": 30, "cfg": 6.0, "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0, "positive": ["11", 0], "negative": ["11", 1], "latent_image": ["11", 2]}, "_meta": {"title": "Sampler"}},
   "13": {"class_type": "VAEDecode", "inputs": {"samples": ["12", 0], "vae": ["4", 0]}, "_meta": {"title": "Decode"}},
   "14": {"class_type": "CreateVideo", "inputs": {"images": ["13", 0], "fps": 16.0, "audio": ["6", 0]}, "_meta": {"title": "Create Video"}},
   "15": {"class_type": "SaveVideo", "inputs": {"video": ["14", 0], "filename_prefix": "s2v", "format": "auto", "codec": "auto"}, "_meta": {"title": "Save Video"}}

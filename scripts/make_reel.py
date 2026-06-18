@@ -87,7 +87,7 @@ def main():
     with open(os.path.join(REPO, args.script)) as f:
         spec = json.load(f)
     ep = os.path.dirname(os.path.abspath(os.path.join(REPO, args.script)))
-    for sub in ("stills", "voice", "clips", "captions", "final"):
+    for sub in ("stills", "voice", "sfx", "clips", "captions", "final"):
         os.makedirs(os.path.join(ep, sub), exist_ok=True)
     cin = os.path.join(COMFY_DIR, "input"); os.makedirs(cin, exist_ok=True)
     cout = os.path.join(COMFY_DIR, "output")
@@ -97,6 +97,25 @@ def main():
     fps = spec.get("fps", 16)
     voice_id = spec["eleven_voice_id"]
     voice_model = spec.get("eleven_model", "eleven_multilingual_v2")
+    style_prefix = spec.get("style_prefix", "")
+    character_prefix = spec.get("character_prefix", "")
+    # Per-episode workflow overrides (e.g. a LightX2V fast b-roll workflow).
+    still_wf = spec.get("still_workflow", STILL_WF)
+    s2v_wf = spec.get("s2v_workflow", S2V_WF)
+    i2v_wf = spec.get("i2v_workflow", I2V_WF)
+
+    def build_prompt(s, talking):
+        # Persistent style + character anchors keep the look consistent across cuts;
+        # only the per-shot scene text changes. The character anchor is applied to
+        # talking shots by default, and to any shot with "character": true.
+        show_char = s.get("character", talking)
+        parts = [style_prefix, character_prefix if show_char else "", s["image_prompt"]]
+        return ", ".join(p.strip(" ,") for p in parts if p and p.strip())
+
+    def gen_voice(text, out):
+        run([PY, "scripts/gen_voice_eleven.py", "--voice-id", voice_id,
+             "--model", voice_model, "--text", text, "--out", out])
+        return probe_duration(out)
 
     for s in spec["shots"]:
         sid = s["id"]
@@ -107,22 +126,24 @@ def main():
         talking = s.get("type") == "talking"
         print(f"\n[reel] === shot {sid} ({s.get('type')}) ===")
 
-        # 1. voice (talking only) — ElevenLabs, then copy into ComfyUI/input
-        s2v_len = None
+        # 1. voice — dialogue (talking, lip-synced via S2V) or b-roll voiceover narration
+        s2v_len, length = None, s.get("frames", 49)
         if talking:
             vmp3 = os.path.join(ep, "voice", f"shot{sid}.mp3")
-            run([PY, "scripts/gen_voice_eleven.py", "--voice-id", voice_id,
-                 "--model", voice_model, "--text", s["line"], "--out", vmp3])
-            # ComfyUI LoadAudio is happiest with wav; transcode into the input dir.
-            wav_in = os.path.join(cin, f"shot{sid}.wav")
+            dur = gen_voice(s["line"], vmp3)
+            wav_in = os.path.join(cin, f"shot{sid}.wav")  # S2V LoadAudio prefers wav
             subprocess.run(["ffmpeg", "-y", "-i", vmp3, "-ar", "44100", "-ac", "1", wav_in],
                            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            s2v_len = snap_len(probe_duration(vmp3), fps)
-            print(f"[reel] voice {probe_duration(vmp3):.1f}s -> S2V length {s2v_len} frames")
+            s2v_len = length = snap_len(dur, fps)
+            print(f"[reel] dialogue {dur:.1f}s -> S2V length {s2v_len} frames")
+        elif s.get("voiceover"):
+            dur = gen_voice(s["voiceover"], os.path.join(ep, "voice", f"shot{sid}.mp3"))
+            length = snap_len(dur, fps)  # size the b-roll to the narration
+            print(f"[reel] voiceover {dur:.1f}s -> I2V length {length} frames")
 
-        # 2. still — FLUX.2 + bunica LoRA, then copy into ComfyUI/input
-        still_cmd = [PY, "scripts/gen_image.py", "--workflow", STILL_WF,
-                     "--prompt", s["image_prompt"], "--out", f"shot{sid}",
+        # 2. still — FLUX.2 + bunica LoRA (style+character anchored), copy into input
+        still_cmd = [PY, "scripts/gen_image.py", "--workflow", still_wf,
+                     "--prompt", build_prompt(s, talking), "--out", f"shot{sid}",
                      "--width", sw, "--height", sh, "--seed", sid,
                      "--outdir", os.path.join(ep, "stills")]
         if args.still_steps:
@@ -133,18 +154,26 @@ def main():
             sys.exit(f"[reel] no still produced for shot {sid}")
         shutil.copy(still, os.path.join(cin, f"shot{sid}.png"))
 
-        # 3. animate — S2V (talking) or I2V (b-roll)
+        # 3. animate — S2V (talking) or I2V (b-roll); retry a couple times on a
+        #    transient ComfyUI failure (gen_video now exits non-zero on error).
         while True:
-            if talking:
-                run([PY, "scripts/gen_video.py", "--workflow", S2V_WF,
-                     "--image", f"shot{sid}.png", "--audio", f"shot{sid}.wav",
-                     "--prompt", s["motion_prompt"], "--out", f"shot{sid}",
-                     "--width", vw, "--height", vh, "--length", s2v_len, "--seed", sid])
-            else:
-                run([PY, "scripts/gen_video.py", "--workflow", I2V_WF,
-                     "--image", f"shot{sid}.png", "--prompt", s["motion_prompt"],
-                     "--out", f"shot{sid}", "--width", vw, "--height", vh,
-                     "--length", s.get("frames", 49), "--seed", sid])
+            for attempt in range(1, 4):
+                try:
+                    if talking:
+                        run([PY, "scripts/gen_video.py", "--workflow", s2v_wf,
+                             "--image", f"shot{sid}.png", "--audio", f"shot{sid}.wav",
+                             "--prompt", s["motion_prompt"], "--out", f"shot{sid}",
+                             "--width", vw, "--height", vh, "--length", s2v_len, "--seed", sid])
+                    else:
+                        run([PY, "scripts/gen_video.py", "--workflow", i2v_wf,
+                             "--image", f"shot{sid}.png", "--prompt", s["motion_prompt"],
+                             "--out", f"shot{sid}", "--width", vw, "--height", vh,
+                             "--length", length, "--seed", sid])
+                    break
+                except subprocess.CalledProcessError as e:
+                    print(f"[reel] shot {sid} animate failed (attempt {attempt}/3): {e}")
+                    if attempt == 3:
+                        sys.exit(f"[reel] giving up on shot {sid} after 3 attempts")
             produced = newest(os.path.join(cout, "**", f"shot{sid}*.mp4")) or \
                 newest(os.path.join(cout, f"shot{sid}*.mp4"))
             if not produced:
@@ -156,6 +185,14 @@ def main():
             ans = input(f"[reel] accept shot {sid}? [Enter=yes / r=regenerate] ").strip().lower()
             if ans != "r":
                 break
+
+        # 4. sfx — optional foley sized to the shot, mixed under the audio at assembly
+        sfx = s.get("sfx")
+        if sfx:
+            sfx_prompt = sfx["prompt"] if isinstance(sfx, dict) else sfx
+            sfx_dur = round(min(22.0, length / fps), 2)
+            run([PY, "scripts/gen_sfx_eleven.py", "--prompt", sfx_prompt,
+                 "--duration", sfx_dur, "--out", os.path.join(ep, "sfx", f"shot{sid}.mp3")])
 
     if args.no_assemble:
         print("[reel] clips done; skipping assembly (--no-assemble)")

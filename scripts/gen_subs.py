@@ -81,11 +81,30 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: Karaoke,{font},{fs},&H0000FFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,{outline},{shadow},2,80,80,{marginv},1
 
 [Events]
-Format: Layer, Start, End, Style, MarginL, MarginR, MarginV, Effect, Text
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
 
-def build_ass(segments, words_per_seg, play_w, play_h, font, font_size):
+def chunk_cards(words, max_chars, max_words):
+    """Group a segment's words into short on-screen 'cards' (reel-style pop
+    captions) so a card always fits one line instead of dumping the whole
+    sentence. Start a new card when adding the next word would exceed either the
+    character budget or the word count."""
+    cards, cur, n = [], [], 0
+    for w in words:
+        wl = len(w[0])
+        if cur and (len(cur) >= max_words or n + 1 + wl > max_chars):
+            cards.append(cur)
+            cur, n = [], 0
+        cur.append(w)
+        n += wl + (1 if n else 0)
+    if cur:
+        cards.append(cur)
+    return cards
+
+
+def build_ass(segments, words_per_seg, play_w, play_h, font, font_size,
+              max_chars, max_words):
     out = [ASS_HEADER.format(w=play_w, h=play_h, font=font, fs=font_size,
                              outline=max(2, font_size // 16),
                              shadow=max(1, font_size // 32),
@@ -93,12 +112,18 @@ def build_ass(segments, words_per_seg, play_w, play_h, font, font_size):
     for seg, words in zip(segments, words_per_seg):
         if not words:
             continue
-        chunks = []
-        for w, ws, we in words:
-            k = max(1, int(round((we - ws) * 100)))  # karaoke duration in cs
-            chunks.append(f"{{\\kf{k}}}{w} ")
-        line = "".join(chunks).rstrip()
-        out.append(f"Dialogue: 0,{_cs(seg['start'])},{_cs(seg['end'])},Karaoke,,0,0,0,,{line}")
+        cards = chunk_cards(words, max_chars, max_words)
+        for i, card in enumerate(cards):
+            disp_start = card[0][1]
+            # Hold each card until the next one starts (last card runs to seg end)
+            # so captions never blink to black between cards.
+            disp_end = cards[i + 1][0][1] if i + 1 < len(cards) else seg["end"]
+            chunks = []
+            for w, ws, we in card:
+                k = max(1, int(round((we - ws) * 100)))  # karaoke duration in cs
+                chunks.append(f"{{\\kf{k}}}{w} ")
+            line = "".join(chunks).rstrip()
+            out.append(f"Dialogue: 0,{_cs(disp_start)},{_cs(disp_end)},Karaoke,,0,0,0,,{line}")
     return "\n".join(out) + "\n"
 
 
@@ -109,6 +134,8 @@ def main():
     ap.add_argument("--play-res", default="1080x1920")
     ap.add_argument("--font", default="Arial")
     ap.add_argument("--font-size", type=int, default=84)
+    ap.add_argument("--max-chars", type=int, default=18, help="max chars per caption card")
+    ap.add_argument("--max-words", type=int, default=3, help="max words per caption card")
     ap.add_argument("--audio", default=None, help="optional wav for whisperx alignment")
     ap.add_argument("--language", default="ro")
     ap.add_argument("--device", default="cuda")
@@ -124,7 +151,8 @@ def main():
     if words_per_seg is None:
         words_per_seg = [even_words(s["text"], s["start"], s["end"]) for s in segments]
 
-    ass = build_ass(segments, words_per_seg, play_w, play_h, args.font, args.font_size)
+    ass = build_ass(segments, words_per_seg, play_w, play_h, args.font, args.font_size,
+                    args.max_chars, args.max_words)
     import os
     os.makedirs(os.path.dirname(os.path.abspath(args.out)) or ".", exist_ok=True)
     with open(args.out, "w") as f:

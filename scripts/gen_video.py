@@ -39,7 +39,19 @@ def wait(server, pid, timeout):
     while time.time() - t0 < timeout:
         hist = json.loads(urllib.request.urlopen(f"http://{server}/history/{pid}").read())
         if pid in hist:
-            return hist[pid]
+            entry = hist[pid]
+            # ComfyUI writes the history entry whether the run SUCCEEDED, errored,
+            # or was interrupted — so presence != success. Surface failures loudly
+            # instead of returning an empty result that downstream reads as "done".
+            st = entry.get("status", {})
+            if st and st.get("status_str") == "error":
+                msgs = st.get("messages", [])
+                detail = next((m for m in msgs if isinstance(m, list)
+                               and m and "error" in str(m[0]).lower()), msgs[-1:] or "?")
+                raise RuntimeError(f"prompt {pid} errored in ComfyUI: {detail}")
+            if st and st.get("completed") is False:
+                raise RuntimeError(f"prompt {pid} did not complete (interrupted)")
+            return entry
         time.sleep(3)
     raise TimeoutError(f"prompt {pid} did not finish within {timeout}s")
 

@@ -69,7 +69,16 @@ def wait(server, pid, timeout):
     while time.time() - t0 < timeout:
         hist = json.loads(urllib.request.urlopen(f"http://{server}/history/{pid}").read())
         if pid in hist:
-            return hist[pid]
+            entry = hist[pid]
+            # Presence in history != success; a run can be there because it errored
+            # or was interrupted. Fail loudly so callers don't treat it as done.
+            st = entry.get("status", {})
+            if st and st.get("status_str") == "error":
+                raise RuntimeError(f"prompt {pid} errored in ComfyUI: "
+                                   f"{st.get('messages', '?')}")
+            if st and st.get("completed") is False:
+                raise RuntimeError(f"prompt {pid} did not complete (interrupted)")
+            return entry
         time.sleep(2)
     raise TimeoutError(f"prompt {pid} did not finish within {timeout}s")
 
