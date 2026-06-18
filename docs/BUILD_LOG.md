@@ -17,7 +17,7 @@ iteration. Newest section first. See `PIPELINE.md` for the target architecture.
 | Voice (RO XTTS-v2) | ⏸ deferred | Earlier track; see memory `fish-s2-cloning-needs-prompt-text`. |
 | Captions (WhisperX) / Assembly (ffmpeg) | ❌ not started | Deterministic tail. |
 
-**Box:** brev `zany-brown-owl` (A100 80GB). `infra/remote.sh {ssh|sync|pull|push|host}`.
+**Box:** brev `stale-blush-orca` (A100 80GB PCIe, driver 580.126.09). `infra/remote.sh {ssh|sync|pull|push|host}`.
 `/ephemeral` is scratch — **wiped on deprovision**. Source of truth = this git repo
 (code) + HF (LoRA weights). Model weights re-downloadable via `env/download_*.sh`.
 

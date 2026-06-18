@@ -20,6 +20,9 @@ episodes/*/final/
 *.wav
 *.mov
 
+# macOS
+.DS_Store
+
 # Python
 __pycache__/
 *.pyc

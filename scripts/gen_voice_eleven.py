@@ -5,8 +5,8 @@ Drop-in alternative to gen_voice.py (XTTS): same --text/--out surface, so the wa
 feeds the same downstream — Wan 2.2 S2V for talking shots (copy into ComfyUI/input/,
 then gen_video.py --audio ...) or voiceover at the ffmpeg assembly stage.
 
-Unlike the XTTS/Fish/MMS paths this needs NO GPU and NO weights — it's a network
-call, so it runs locally on the Mac; only the resulting wav syncs to the box.
+Unlike the XTTS/Fish/MMS paths this needs NO GPU and NO weights — it's a pure
+stdlib network call, so it runs anywhere (the box, inside make_reel.py, or the Mac).
 
 NOTE: ElevenLabs is a paid 3rd-party API and contradicts PIPELINE.md's "open-source
 only / non-commercial" constraint. This is an experiment to evaluate Romanian voice

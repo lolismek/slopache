@@ -1,0 +1,52 @@
+{
+  "episode": "ep01_ce_mananc",
+  "title": "Ce mănânc într-o zi",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "still_width": 768,
+  "still_height": 1344,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună dimineața, dragii mei! Astăzi vă arăt ce mănânc eu într-o zi.",
+      "image_prompt": "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a white embroidered Romanian ie blouse and a red floral headscarf, standing in a cozy rustic village kitchen, warm morning light, a front-facing waist-up shot, smiling warmly at the camera",
+      "motion_prompt": "she speaks warmly to the camera, gentle head movements and a friendly smile, subtle natural motion"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "line": null,
+      "image_prompt": "a wooden cutting board with a thick slab of slănină (cured pork fat) and a knife, a sliced red tomato and onion beside it, on a rustic kitchen table, warm morning light, close-up food shot, photoreal",
+      "motion_prompt": "a hand slices the slănină, faint steam rising, shallow depth of field, slow gentle motion",
+      "frames": 49
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "La micul dejun: slănină cu ceapă și o roșie din grădina mea.",
+      "image_prompt": "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a white embroidered Romanian ie blouse and a red floral headscarf, holding a rustic plate of food, in a village kitchen, warm light, a front-facing waist-up shot, proud cheerful expression",
+      "motion_prompt": "she holds up the plate proudly toward the camera and speaks, slight nod, warm smile, subtle natural motion"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "line": null,
+      "image_prompt": "a rustic Romanian breakfast spread on a wooden table: bread, slănină, tomatoes, onions, a steaming cup of coffee, warm morning light from a window, overhead food shot, photoreal",
+      "motion_prompt": "steam rises from the coffee, a hand reaches in to take a piece of bread, slow gentle motion",
+      "frames": 49
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Asta e tot, dragii mei. Poftă bună și ne vedem mâine!",
+      "image_prompt": "ohwxbunica, a 3D Pixar-style elderly Romanian grandmother wearing a white embroidered Romanian ie blouse and a red floral headscarf, in a cozy village kitchen, warm light, a front-facing waist-up shot, waving goodbye with a big warm smile",
+      "motion_prompt": "she waves goodbye to the camera and smiles warmly, gentle natural motion"
+    }
+  ]
+}

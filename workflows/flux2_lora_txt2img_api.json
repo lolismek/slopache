@@ -1,0 +1,72 @@
+{
+  "10": {
+    "class_type": "UNETLoader",
+    "inputs": {"unet_name": "flux2_dev_fp8mixed.safetensors", "weight_dtype": "default"},
+    "_meta": {"title": "Load Diffusion Model"}
+  },
+  "11": {
+    "class_type": "CLIPLoader",
+    "inputs": {"clip_name": "mistral_3_small_flux2_fp8.safetensors", "type": "flux2"},
+    "_meta": {"title": "Load CLIP (Mistral)"}
+  },
+  "12": {
+    "class_type": "VAELoader",
+    "inputs": {"vae_name": "flux2-vae.safetensors"},
+    "_meta": {"title": "Load VAE"}
+  },
+  "15": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {"model": ["10", 0], "lora_name": "bunica_flux2_v1_step1000.safetensors", "strength_model": 0.9},
+    "_meta": {"title": "Load Bunica LoRA"}
+  },
+  "20": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {"text": "PLACEHOLDER_PROMPT", "clip": ["11", 0]},
+    "_meta": {"title": "POSITIVE_PROMPT"}
+  },
+  "21": {
+    "class_type": "FluxGuidance",
+    "inputs": {"conditioning": ["20", 0], "guidance": 4.0},
+    "_meta": {"title": "Flux Guidance"}
+  },
+  "22": {
+    "class_type": "BasicGuider",
+    "inputs": {"model": ["15", 0], "conditioning": ["21", 0]},
+    "_meta": {"title": "Guider"}
+  },
+  "30": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {"width": 768, "height": 1344, "batch_size": 1},
+    "_meta": {"title": "Empty Latent"}
+  },
+  "31": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {"steps": 20, "width": 768, "height": 1344},
+    "_meta": {"title": "Scheduler"}
+  },
+  "32": {
+    "class_type": "KSamplerSelect",
+    "inputs": {"sampler_name": "euler"},
+    "_meta": {"title": "Sampler Select"}
+  },
+  "33": {
+    "class_type": "RandomNoise",
+    "inputs": {"noise_seed": 0},
+    "_meta": {"title": "Noise"}
+  },
+  "34": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {"noise": ["33", 0], "guider": ["22", 0], "sampler": ["32", 0], "sigmas": ["31", 0], "latent_image": ["30", 0]},
+    "_meta": {"title": "Sampler"}
+  },
+  "40": {
+    "class_type": "VAEDecode",
+    "inputs": {"samples": ["34", 0], "vae": ["12", 0]},
+    "_meta": {"title": "Decode"}
+  },
+  "41": {
+    "class_type": "SaveImage",
+    "inputs": {"images": ["40", 0], "filename_prefix": "img"},
+    "_meta": {"title": "Save"}
+  }
+}

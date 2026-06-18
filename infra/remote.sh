@@ -29,6 +29,9 @@ cmd="${1:-}"; shift || true
 case "$cmd" in
   ssh)  ssh "${SSH_OPTS[@]}" "$TARGET" "$@" ;;
   sync) rsync -az --delete --exclude '.git' --exclude 'outputs' --exclude '*.pem' \
+          --exclude 'episodes/*/stills'   --exclude 'episodes/*/voice' \
+          --exclude 'episodes/*/clips'    --exclude 'episodes/*/captions' \
+          --exclude 'episodes/*/final'    --exclude 'episodes/*/.tmp' \
           -e "$RSH" "$HERE/../" "$TARGET:$REMOTE_ROOT/" ;;
   pull) rsync -azP -e "$RSH" "$TARGET:$1" "$2" ;;
   push) rsync -azP -e "$RSH" "$1" "$TARGET:$2" ;;
