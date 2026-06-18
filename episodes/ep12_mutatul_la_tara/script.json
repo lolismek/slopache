@@ -1,0 +1,83 @@
+{
+  "episode": "ep12_mutatul_la_tara",
+  "title": "Slow living la țară (orășenii mi-au descoperit viața)",
+  "category": "trend",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Toți orășenii se mută acum la țară. 'Slow living', zic ei. Eu trăiesc așa de-o viață. Hai să vă arăt.",
+      "image_prompt": "sitting on a rustic wooden porch with a cup of tea in hand, relaxed and serene, golden morning light over the village garden behind her, gentle knowing smile, waist-up front-facing shot",
+      "motion_prompt": "she sips her tea calmly and gives a serene knowing smile to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Liniște. Aer curat. Și zero semnal. Detox digital gratis.",
+      "image_prompt": "a serene misty Romanian village garden at golden hour, dew on the vegetable rows, a wooden fence and distant hills, wide peaceful shot",
+      "motion_prompt": "soft mist drifts slowly over the dewy garden rows, a butterfly passing, leaves swaying gently, serene coherent motion, steady camera",
+      "sfx": "peaceful morning birdsong and a gentle breeze in a garden"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Ei zic 'cottagecore'. Noi ziceam... că suntem săraci.",
+      "image_prompt": "shrugging with a wry deadpan smile and open palms on the rustic wooden porch, the garden behind her, waist-up front-facing shot",
+      "motion_prompt": "she shrugs with open palms and a wry deadpan smile to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Roșii din grădină. Nu de la supermarket, cu cod de bare.",
+      "image_prompt": "a hand gently picking a ripe red tomato from a green vine in a sunlit village garden, dew droplets on the leaves, close-up",
+      "motion_prompt": "a hand gently picks a ripe tomato from the vine, the vine springing back, dew droplets trembling, slow satisfying coherent motion, shallow focus",
+      "sfx": "a tomato being plucked from a vine, leaves rustling, garden ambience"
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Soft life? Eu mulg vaca la cinci dimineața. Asta-i hard life, dragelor.",
+      "image_prompt": "standing in the sunlit village garden with both hands on her hips and a playful proud grin, golden morning light, waist-up front-facing shot",
+      "motion_prompt": "she rests her hands on her hips and gives a playful proud grin to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Dar e frumos. Recunosc. Mai ales când nu trebuie să sapi.",
+      "image_prompt": "a peaceful sunlit village yard with a wooden bench under a tree, hens wandering, laundry on a line swaying in the breeze, warm golden light, wide shot",
+      "motion_prompt": "laundry sways gently on the line, hens wander across the yard, dappled light shifting under the tree, serene coherent motion, steady camera",
+      "sfx": "gentle village ambience with hens and softly rustling laundry"
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Așa că, bine ați venit la țară. Aduceți-vă cizme. Și răbdare.",
+      "image_prompt": "gesturing warmly toward the garden in a welcoming open-armed pose with a kind smile, on the rustic wooden porch, waist-up front-facing shot",
+      "motion_prompt": "she gestures warmly toward the garden in a welcoming open-armed pose and smiles kindly, warm coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă visați la viața de la țară. Vă aștept cu sarmale. Pupici!",
+      "image_prompt": "waving goodbye warmly from the rustic porch with her cup of tea in hand, big affectionate smile, golden garden behind her, waist-up front-facing shot",
+      "motion_prompt": "she waves goodbye warmly from the porch and blows a kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

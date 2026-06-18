@@ -1,0 +1,83 @@
+{
+  "episode": "ep11_loud_budgeting",
+  "title": "Loud budgeting în mijlocul satului",
+  "category": "trend",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Azi vă învăț 'loud budgeting'. Adică strigi în gura mare ce NU cumperi. Fără rușine!",
+      "image_prompt": "standing in a sunny village square with hands cupped around her mouth as if about to shout, confident playful expression, old wooden houses behind her, waist-up front-facing shot",
+      "motion_prompt": "she cups her hands around her mouth and leans forward as if about to shout, then grins, animated but coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Nu cumpăr pâinea aia scumpă! Să audă tot satul!",
+      "image_prompt": "a wide shot of a sunny Romanian village square with old wooden houses, a few hens, and a wooden bench, warm golden light, peaceful and almost empty",
+      "motion_prompt": "warm light over the quiet village square, a few hens pecking, a curtain swaying in a distant window, gentle ambient coherent motion, steady camera",
+      "sfx": "a quiet village square ambience with distant hens and a soft echo"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "De ce să dau bani pe cafea la oraș? Am cicoare în grădină!",
+      "image_prompt": "gesturing firmly with one finger raised in a proud declaration, standing in the sunny village square, confident grin, waist-up front-facing shot",
+      "motion_prompt": "she raises one finger in a firm proud declaration and grins at the camera, lively coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Vecina a auzit. Acum face și ea economie. Solidaritate!",
+      "image_prompt": "an old wooden window with a lace curtain twitching open slightly, a red flowerpot on the sill, warm village light, close-up",
+      "motion_prompt": "the lace curtain twitches open slightly at the window as if someone is peeking, the flowerpot still, subtle comic coherent motion, steady camera",
+      "sfx": {"prompt": "a wooden window creaking open softly", "volume": 0.6}
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Bugetul meu? Îl știe tot satul. Și popa. Și primarul.",
+      "image_prompt": "spreading both arms wide proudly toward the whole square as if addressing everyone, big confident grin, in the sunny village square, waist-up front-facing shot",
+      "motion_prompt": "she spreads both arms wide toward the square in a proud address and beams, lively coherent motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Banii stau în ciorap. Ca la bancă. Dar mai sigur.",
+      "image_prompt": "a hand tucking folded banknotes into a thick grey wool sock on a rustic wooden table, warm light, close-up",
+      "motion_prompt": "a hand tucks folded banknotes into the wool sock and pats it twice, slow deliberate coherent motion, shallow focus",
+      "sfx": "fabric rustling and two soft pats, quiet room ambience"
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Loud budgeting? Eu o fac de cincizeci de ani. Doar acum are nume.",
+      "image_prompt": "crossing her arms with a satisfied proud smile, standing in the sunny village square, waist-up front-facing shot",
+      "motion_prompt": "she crosses her arms and gives a satisfied proud smile to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă și voi strigați ce nu cumpărați! Tare, fetelor! Pupici!",
+      "image_prompt": "waving cheerfully with both hands in the sunny village square, big grin, waist-up front-facing shot",
+      "motion_prompt": "she waves cheerfully with both hands and blows a kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

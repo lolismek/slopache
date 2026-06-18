@@ -1,0 +1,83 @@
+{
+  "episode": "ep09_cortisol_cocktail",
+  "title": "Cortisol cocktail (rețeta anti-stres a bunicii)",
+  "category": "trend",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Toată lumea bea 'cortisol cocktail' pentru stres. Hai că vă arăt rețeta bunicii. Anti-stres, garantat.",
+      "image_prompt": "standing at a rustic kitchen counter holding up a large empty glass jar with a playful confident smile, a few ingredients on the counter, waist-up front-facing shot",
+      "motion_prompt": "she holds up the empty glass jar and smiles confidently at the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Primul ingredient: apă de la fântână. Zero microplastice.",
+      "image_prompt": "clear fresh water being poured from a wooden bucket into the same large glass jar on a rustic counter, droplets sparkling in warm light, close-up",
+      "motion_prompt": "clear water pours from the wooden bucket into the glass jar, droplets sparkling, the jar filling, slow refreshing coherent motion, shallow focus",
+      "sfx": "water being poured into a glass jar, refreshing splashing"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Apoi, un strop de zeamă de murături. Electroliți, draga mea.",
+      "image_prompt": "tipping a small ladle of cloudy pickle brine into the same large glass jar of water with a knowing look, a jar of pickles beside her on the counter, waist-up front-facing shot",
+      "motion_prompt": "she tips a small ladle of pickle brine into the jar and gives a knowing nod to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Și magneziu. De pe poarta de fier. Natural.",
+      "image_prompt": "extreme close-up of a finger scraping a little rust-orange dust from an old iron gate hinge into a small metal spoon, warm light",
+      "motion_prompt": "a finger scrapes a little orange dust from the old iron gate into a spoon, tiny flakes falling, slow deadpan coherent motion, shallow focus",
+      "sfx": {"prompt": "metal scraping softly on an old iron gate", "volume": 0.6}
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Amestecăm. Și gata. Cortizolul a fugit speriat.",
+      "image_prompt": "vigorously stirring the cloudy drink in the large glass jar with a wooden spoon and grinning at the camera, at the rustic kitchen counter, waist-up front-facing shot",
+      "motion_prompt": "she stirs the jar vigorously with a wooden spoon and grins at the camera, lively coherent motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Eu am crescut unsprezece copii și o vacă. Ăla a fost stres.",
+      "image_prompt": "the cloudy pale drink swirling and slowly settling in the same large glass jar on the rustic counter, a wooden spoon resting in it, warm golden light, close-up",
+      "motion_prompt": "the pale cloudy drink swirls and slowly settles in the glass jar, the spoon resting, gentle coherent motion, shallow focus",
+      "sfx": "liquid swirling and settling in a glass jar, quiet kitchen ambience"
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Mmm. Gust de... liniște.",
+      "image_prompt": "taking a slow sip from the large glass jar with a deadpan satisfied expression, one eyebrow raised, at the rustic kitchen counter, waist-up front-facing shot",
+      "motion_prompt": "she takes a slow sip from the jar and holds a deadpan satisfied expression, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă aveți stres. Și beți zeamă de murături. Pupici!",
+      "image_prompt": "raising the large glass jar toward the camera in a cheers gesture with a warm grin, at the rustic kitchen counter, waist-up front-facing shot",
+      "motion_prompt": "she raises the jar toward the camera in a cheerful toast and smiles, gentle coherent natural motion"
+    }
+  ]
+}

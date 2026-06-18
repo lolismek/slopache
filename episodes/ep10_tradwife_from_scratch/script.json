@@ -1,0 +1,83 @@
+{
+  "episode": "ep10_tradwife_from_scratch",
+  "title": "Tradwife: brânză de la zero (adică de la capră)",
+  "category": "trend",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Azi, ca o adevărată 'tradwife', fac brânză. De la zero. Adică de la capră.",
+      "image_prompt": "standing elegantly in a sunny village yard with one hand raised gracefully like a glamorous homemaker, a fancy floral shawl draped over her shoulders, poised smile, waist-up front-facing shot",
+      "motion_prompt": "she raises one hand gracefully and gives a poised glamorous smile to the camera, elegant coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Primul pas: găsești capra. Capra nu vrea să fie găsită.",
+      "image_prompt": "a mischievous white goat trotting away across a grassy village yard, looking back over its shoulder, warm golden light, wide shot",
+      "motion_prompt": "the goat trots away across the yard and glances back over its shoulder, lively coherent motion, steady camera following",
+      "sfx": "a goat bleating and hooves trotting on grass"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Un mic detaliu. O prindem noi.",
+      "image_prompt": "looking slightly disheveled with her floral shawl askew and a coil of rope in one hand, a determined comic grin, in the village yard, waist-up front-facing shot",
+      "motion_prompt": "she pushes her askew shawl back and grips the rope with a determined comic grin, lively but coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Lapte proaspăt. Direct de la sursă. Bio, normal.",
+      "image_prompt": "fresh milk streaming into a metal pail in a rustic barn, warm light, foam forming on top, close-up",
+      "motion_prompt": "milk streams into the metal pail and foam forms on the surface, steady rhythm, appetizing coherent motion, shallow focus",
+      "sfx": "milk squirting rhythmically into a metal pail"
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Acum fierbem laptele. Tradwife-ele din America n-au capră. Eu am.",
+      "image_prompt": "stirring a large pot on a wood stove with a wooden spoon, her floral shawl back in place, proud expression, rustic village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she stirs the large pot with a wooden spoon and nods proudly at the camera, warm coherent motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Se încheagă frumos. Răbdare, dragelor.",
+      "image_prompt": "extreme close-up of soft fresh white cheese curds being lifted from cloudy whey with a wooden spoon, steam rising, warm light",
+      "motion_prompt": "soft white curds lift slowly from the whey on the wooden spoon, whey dripping back, gentle steam, slow appetizing coherent motion, shallow focus",
+      "sfx": {"prompt": "liquid gently dripping and a spoon stirring in a warm pot", "volume": 0.6}
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Brânză! De la zero. Mi-a luat o zi întreagă și o capră.",
+      "image_prompt": "proudly presenting a small round of fresh white cheese on a wooden board with both hands, her floral shawl slightly crooked, triumphant grin, rustic village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she presents the round of cheese with both hands and beams triumphantly, warm coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă și voi faceți totul de la zero. Și feriți-vă de capre. Pupici!",
+      "image_prompt": "waving goodbye with the wooden board of fresh cheese in front of her, warm grin, rustic village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she waves goodbye and blows a kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "episode": "ep07_aura_farming",
+  "title": "Aura farming pe baltă",
+  "category": "brainrot",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Fetelor! Pe internet toți își 'cultivă aura'. Aură? Eu cultiv ceapă, roșii și... aură. Veniți cu mine la baltă.",
+      "image_prompt": "standing by a small wooden rowboat at the edge of a calm village pond, gesturing toward the boat with an excited grin, reeds and golden light around her, waist-up front-facing shot",
+      "motion_prompt": "she gestures toward the little rowboat with an excited grin and beckons the camera, animated but coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Aura se cultivă la prova bărcii. Ca băiatul din Indonezia.",
+      "image_prompt": "a small wooden rowboat drifting gently on a calm misty village pond at golden hour, tall reeds and a single duck nearby, wide low shot from near the water",
+      "motion_prompt": "the small rowboat drifts gently across the calm pond, ripples spreading, a duck paddling alongside, slow serene coherent motion, steady camera",
+      "sfx": "gentle water lapping and a duck quacking on a calm pond"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Asta-i aura, dragelor. Se simte?",
+      "image_prompt": "standing balanced at the prow of the small wooden rowboat on the calm pond, doing a slow flowing rhythmic dance with both arms raised, headscarf fluttering in the breeze, confident serene expression, full body shot",
+      "motion_prompt": "she sways and flows her arms in a slow rhythmic dance at the boat prow, headscarf fluttering, smooth balanced coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Rața îmi ține ritmul. Boom, boom, mac-mac.",
+      "image_prompt": "a plump white duck paddling steadily beside a wooden rowboat on a golden pond, water droplets on its back, close low shot near the water",
+      "motion_prompt": "the duck paddles steadily beside the boat, bobbing its head in rhythm, water rippling, lively coherent motion, steady low camera",
+      "sfx": "a duck quacking rhythmically with water splashing gently"
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Nici nu transpir. Aura face totul.",
+      "image_prompt": "posing serenely at the prow of the rowboat with both arms spread wide and eyes half-closed, confident, golden pond and reeds behind her, full body shot",
+      "motion_prompt": "she spreads her arms wide at the prow and holds a serene confident pose, headscarf gently fluttering, minimal smooth coherent motion, stable framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Echilibru. Asta-i cheia. Nu cad niciodată.",
+      "image_prompt": "the small wooden rowboat rocking very slightly on the calm golden pond, tall reeds swaying along the edge, wide serene shot",
+      "motion_prompt": "the rowboat rocks very gently on the calm water, reeds swaying slowly, serene coherent motion, steady camera",
+      "sfx": {"prompt": "calm pond ambience with soft water movement and reeds rustling", "volume": 0.5}
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Vedeți? Maximum de aură, minimum de efort. Soft life pe baltă.",
+      "image_prompt": "standing relaxed in the wooden rowboat with both hands on her hips and a proud serene smile, golden pond and reeds behind her, waist-up front-facing shot",
+      "motion_prompt": "she rests her hands on her hips and gives a proud serene smile to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like ca să vă crească aura. Și dați și la rață niște pâine. Pupici!",
+      "image_prompt": "waving goodbye from the wooden rowboat with a warm grin, the duck nearby on the golden pond, waist-up front-facing shot",
+      "motion_prompt": "she waves goodbye from the boat and blows a kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

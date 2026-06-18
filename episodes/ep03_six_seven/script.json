@@ -1,0 +1,83 @@
+{
+  "episode": "ep03_six_seven",
+  "title": "Trendul șase-șapte (cu ouă)",
+  "category": "brainrot",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Bună, fetelor! Trendul ăsta nou, șase-șapte? Eu îl fac de cincizeci de ani.",
+      "image_prompt": "holding up six fingers on one hand and seven on the other right next to her grinning face, standing in a rustic wooden chicken coop with a wicker basket of brown eggs on her arm, waist-up front-facing shot",
+      "motion_prompt": "she proudly holds up six fingers then seven fingers next to her face and grins at the camera, playful natural head movement, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Șase ouă azi. Mâine, șapte. Ăsta-i tot secretul, dragelor.",
+      "image_prompt": "extreme close-up of weathered hands holding six brown eggs cupped over a rustic wicker basket, warm morning light inside a wooden chicken coop, shallow depth of field",
+      "motion_prompt": "the weathered hands gently cup six brown eggs over the basket, one egg rolling slightly, shallow focus, slow coherent motion",
+      "sfx": "hens clucking softly inside a wooden chicken coop"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Nepotul zice că-i 'brain rot'. Eu zic că-i micul dejun, mamă.",
+      "image_prompt": "holding a single brown egg up toward the camera with a deadpan proud expression, plump hens behind her in the coop, waist-up front-facing shot",
+      "motion_prompt": "she holds a single egg up toward the camera and raises an eyebrow with a deadpan smile, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Găinile mele? Productivitate maximă. Zero zile libere.",
+      "image_prompt": "several plump brown hens pecking at scattered grain on the dirt floor of a rustic wooden coop, warm light filtering through the wooden slats, low close-up",
+      "motion_prompt": "the hens peck and bob at scattered grain, one briefly flaps its wings, steady camera, natural coherent farmyard motion",
+      "sfx": "hens clucking and pecking at grain, occasional wing flap in a coop"
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Hai să numărăm împreună! Șase... și... șapte!",
+      "image_prompt": "doing an exaggerated six-then-seven counting hand gesture with an excited teaching expression, the wicker basket of eggs on her hip, in the coop, waist-up front-facing shot",
+      "motion_prompt": "she counts on her fingers with an exaggerated teaching gesture and beams at the camera, lively but coherent motion, stable framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Și acum, partea bună a trendului. Tigaia.",
+      "image_prompt": "the same brown eggs cracking and frying sunny-side-up in a cast-iron pan on a wood stove, extreme close-up, golden butter bubbling around the edges",
+      "motion_prompt": "the eggs sizzle and bubble in the cast-iron pan, edges crisping, gentle steam rising, slow appetizing coherent motion",
+      "sfx": {"prompt": "eggs sizzling and crackling in a hot frying pan", "volume": 0.7}
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Vezi? Trendul ăsta se și mănâncă. Cu mămăligă.",
+      "image_prompt": "sitting at a rustic wooden table with a plate of fried eggs and polenta in front of her, holding a fork triumphantly, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she lifts a forkful from the plate and gives a satisfied nod to the camera, warm smile, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă și voi numărați ouăle dimineața. Șase, șapte, pupici!",
+      "image_prompt": "waving at the camera with the plate of fried eggs in front of her, big warm smile, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she waves goodbye and blows a small kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "episode": "ep05_clanker",
+  "title": "Afară, clanker! (robotul de curățenie)",
+  "category": "brainrot",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Fetelor, nepotul mi-a trimis un robot care face curat singur. Un... clanker. Hai să-l cunoaștem.",
+      "image_prompt": "standing in a cozy rustic village kitchen holding a straw broom defensively across her body, looking down at the floor with playful suspicion and a comic frown, waist-up front-facing shot",
+      "motion_prompt": "she grips the straw broom and peers down at the floor with playful suspicion, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Se plimbă singur prin casă. Ca ginerele.",
+      "image_prompt": "a small round white robot vacuum gliding across a worn handwoven Romanian wool rug on a wooden floor, warm kitchen light, low close-up shot",
+      "motion_prompt": "the small round robot vacuum glides slowly across the woven rug and bumps gently into a chair leg, steady low camera, smooth coherent motion",
+      "sfx": "a small robot vacuum humming and whirring as it moves across a floor"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "Vrea să-mi scaneze covorul. Covorul ăsta-i din '72! Nu și-a dat consimțământul!",
+      "image_prompt": "pointing the straw broom accusingly down toward the floor with an outraged but comic expression, in the cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she points the broom toward the floor and shakes it once with comic outrage, lively but coherent motion, stable framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Afară! Afară, clanker!",
+      "image_prompt": "the same small round white robot vacuum spinning in a confused little circle on the handwoven wool rug as a straw broom nudges toward it, warm kitchen light, low angle",
+      "motion_prompt": "the small robot vacuum spins in a confused little circle as the broom nudges it, lively coherent motion, steady low camera",
+      "sfx": {"prompt": "a broom sweeping vigorously on a wooden floor with a robot whirring", "volume": 0.7}
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "La mine se mătură cu mâna. Și cu credință.",
+      "image_prompt": "sweeping the wooden floor with the straw broom in steady strokes with a satisfied determined expression, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she sweeps the floor with the straw broom in steady strokes and nods with satisfaction, coherent rhythmic motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Robotul s-a dus să se încarce. De frică.",
+      "image_prompt": "the same small round white robot vacuum sitting still on its charging dock in a corner by a wooden wall, a single status light glowing, warm dim light, close-up",
+      "motion_prompt": "the small robot sits still on its dock with a softly pulsing status light, faint dust settling around it, very subtle coherent motion, steady camera",
+      "sfx": {"prompt": "a soft electronic charging beep and gentle hum", "volume": 0.5}
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Nu-mi trebuie inteligență artificială. Am nepoți. Tot proști, dar ai mei.",
+      "image_prompt": "leaning on the straw broom with a warm triumphant smile, looking into the camera, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she leans on the broom and gives a warm triumphant smile to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Dați like dacă și voi măturați ca pe vremuri. Jos clankerii! Pupici!",
+      "image_prompt": "waving the straw broom in a cheerful goodbye with a big grin, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she waves the broom cheerfully and blows a kiss to the camera, warm smile, gentle coherent natural motion"
+    }
+  ]
+}

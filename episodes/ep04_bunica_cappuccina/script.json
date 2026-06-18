@@ -1,0 +1,83 @@
+{
+  "episode": "ep04_bunica_cappuccina",
+  "title": "Bunica Cappuccina (brainrot italian)",
+  "category": "brainrot",
+  "eleven_voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+  "eleven_model": "eleven_multilingual_v2",
+  "language": "ro",
+  "music": null,
+  "music_volume": 0.15,
+  "i2v_workflow": "workflows/wan22_i2v_fast_api.json",
+  "still_width": 720,
+  "still_height": 1248,
+  "video_width": 480,
+  "video_height": 832,
+  "fps": 16,
+  "output_fps": 60,
+  "interp_backend": "rife",
+  "trim_head": 2,
+  "trim_tail": 2,
+  "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",
+  "character_prefix": "ohwxbunica, a cheerful elderly Romanian grandmother with rosy cheeks and kind eyes, wearing a white embroidered Romanian ie blouse and a red floral headscarf",
+  "shots": [
+    {
+      "id": 1,
+      "type": "talking",
+      "line": "Fetelor! Un copil din satul vecin a ajuns viral cu o balerină din cești de cafea. Inteligență artificială, zice. Stați să vă arăt.",
+      "image_prompt": "standing in a cozy rustic village kitchen holding a small steaming white cup of coffee, gesturing at the camera with mock outrage and a playful smile, waist-up front-facing shot",
+      "motion_prompt": "she gestures with the little coffee cup and rolls her eyes playfully at the camera, animated but coherent motion, steady framing"
+    },
+    {
+      "id": 2,
+      "type": "broll",
+      "voiceover": "Tralala, balerina, prostii. Asta-i cafea adevărată, la ibric.",
+      "image_prompt": "close-up of a traditional copper coffee pot bubbling over a small blue gas flame on a rustic stove, rich coffee foam rising to the rim, warm light",
+      "motion_prompt": "the coffee in the copper pot bubbles up and the foam rises toward the rim, gentle steam, slow satisfying coherent motion",
+      "sfx": "coffee bubbling and softly hissing in a small pot on a stove"
+    },
+    {
+      "id": 3,
+      "type": "talking",
+      "line": "De azi sunt și eu influenceriță internațională. Spuneți-mi... Bunica Cappuccina!",
+      "image_prompt": "striking a dramatic proud pose with one hand on her hip and the other holding the small white coffee cup aloft like a trophy, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she strikes a dramatic proud pose and lifts the cup like a trophy, playful confident motion, stable framing"
+    },
+    {
+      "id": 4,
+      "type": "broll",
+      "voiceover": "Eu nu dansez balet. Eu dansez hora. Cu cana în mână.",
+      "image_prompt": "the same small white coffee cup spinning slowly on a rustic wooden table like a tiny dancer, warm golden light, shallow depth of field",
+      "motion_prompt": "the small white coffee cup slowly spins in place on the wooden table, a little coffee swirling inside, whimsical slow coherent motion",
+      "sfx": {"prompt": "a ceramic cup softly scraping and spinning on a wooden table", "volume": 0.6}
+    },
+    {
+      "id": 5,
+      "type": "talking",
+      "line": "Băiatul ăla a folosit inteligență artificială. Eu folosesc inteligență... naturală.",
+      "image_prompt": "tapping her temple with one finger and giving a sly wink to the camera, holding the small white coffee cup in the other hand, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she taps her temple with one finger and gives a slow knowing wink to the camera, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 6,
+      "type": "broll",
+      "voiceover": "Un strop de lapte de la vaca Florica. Așa se face un cappuccino la țară.",
+      "image_prompt": "a stream of fresh milk being poured into the same small white cup of dark coffee, swirling into soft foam, extreme close-up, warm golden light",
+      "motion_prompt": "milk pours into the dark coffee and swirls into a soft foam, gentle slow appetizing coherent motion, shallow focus",
+      "sfx": "milk being poured into a cup of coffee, soft liquid pouring"
+    },
+    {
+      "id": 7,
+      "type": "talking",
+      "line": "Băiete, dacă mă vezi: bravo ție. Dar la mine găsești și gust, nu doar like-uri.",
+      "image_prompt": "raising the small white coffee cup toward the camera in a friendly warm toast with a grin, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she raises the cup toward the camera in a warm toast and smiles, subtle coherent motion, steady framing"
+    },
+    {
+      "id": 8,
+      "type": "talking",
+      "line": "Bunica Cappuccina, episodul unu. Dați like, că urmează... Bunica Espresso! Pupici!",
+      "image_prompt": "blowing a kiss to the camera while holding the small white coffee cup, big warm smile, cozy village kitchen, waist-up front-facing shot",
+      "motion_prompt": "she blows a kiss to the camera and waves, warm smile, gentle coherent natural motion"
+    }
+  ]
+}
