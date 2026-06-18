@@ -118,6 +118,9 @@ def main():
     ap.add_argument("--align", action="store_true", help="force-align captions with whisperx")
     ap.add_argument("--align-device", default="cuda")
     ap.add_argument("--music", default=None, help="override music path (else script.music)")
+    ap.add_argument("--output-fps", type=int, default=None,
+                    help="interpolate the final video up to this fps (motion-compensated "
+                         "ffmpeg minterpolate); default = script.output_fps or no interpolation")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
@@ -200,7 +203,8 @@ def main():
     else:
         ass = None
 
-    # D. music duck-mix + loudnorm + burn subs -> final
+    # D. (optional fps interpolation) + music duck-mix + loudnorm + burn subs -> final
+    out_fps = args.output_fps or spec.get("output_fps") or fps
     music = args.music or spec.get("music")
     music_vol = spec.get("music_volume", 0.15)
     cmd = ["ffmpeg", "-y"]
@@ -214,9 +218,19 @@ def main():
     else:
         cmd += ["-i", body]
         afilter = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11[a]"
-    vfilter = f"[0:v]ass=filename='{ass}'[v]" if ass else "[0:v]copy[v]"
+    # Video chain: interpolate motion-compensated frames FIRST (Wan is 16fps native and
+    # reads choppy), THEN draw captions so text is rendered crisply per output frame and
+    # never morphed. Scene-change detection keeps hard cuts from ghosting.
+    vchain = []
+    if out_fps > fps:
+        vchain.append(f"minterpolate=fps={out_fps}:mi_mode=mci:mc_mode=aobmc:"
+                      "me_mode=bidir:vsbmc=1")
+        print(f"[assemble] interpolating {fps} -> {out_fps} fps (minterpolate mci)")
+    if ass:
+        vchain.append(f"ass=filename='{ass}'")
+    vfilter = "[0:v]" + (",".join(vchain) if vchain else "copy") + "[v]"
     cmd += ["-filter_complex", f"{vfilter};{afilter}", "-map", "[v]", "-map", "[a]",
-            "-r", str(fps), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "medium",
+            "-r", str(out_fps), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "medium",
             "-crf", "18", "-c:a", "aac", "-b:a", "192k", "-shortest", out]
     run(cmd)
     print(f"[assemble] done -> {out}")
