@@ -100,6 +100,25 @@ a gitignored repo-root `.env`, which `sync` copies to the box.
 ./infra/remote.sh pull /ephemeral/slopache/episodes/ep02_influencer/final/reel.mp4 ./outputs/
 ```
 
+### Batching episodes (run many overnight)
+
+`scripts/batch_reels.py` runs `make_reel.py --yes` over a queue of episodes in
+sequence on the one box. A failing episode is logged (`<ep>/build.log`) and the
+batch continues; `--skip-existing` skips episodes that already have a
+`final/reel.mp4`, so an interrupted run resumes cleanly. Launch it detached so it
+survives an ssh disconnect:
+
+```bash
+./infra/remote.sh ssh 'cd /ephemeral/slopache && \
+  COMFY_DIR=/ephemeral/ComfyUI infra/comfy.sh start && COMFY_DIR=/ephemeral/ComfyUI infra/comfy.sh wait && \
+  nohup python scripts/batch_reels.py --all --skip-existing > batch.log 2>&1 &'
+
+./infra/remote.sh ssh 'tail -n 40 /ephemeral/slopache/batch.log'      # check progress
+./infra/remote.sh pull '/ephemeral/slopache/episodes/*/final/reel.mp4' ./outputs/   # pull all finished
+```
+
+A full episode is ~45–60 min at 480p, so ~10 fit in an overnight run.
+
 ## Writing an episode (`script.json`)
 
 Top-level keys set the look, voice and render config; `shots` is an ordered list.
