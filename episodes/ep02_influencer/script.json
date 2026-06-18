@@ -13,6 +13,7 @@
   "video_height": 832,
   "fps": 16,
   "output_fps": 60,
+  "interp_backend": "rife",
   "trim_head": 2,
   "trim_tail": 2,
   "style_prefix": "3D Pixar-style animation, Romanian village aesthetic, warm golden cinematic lighting, soft global illumination, cohesive warm film color grade, highly detailed, vertical 9:16 composition",

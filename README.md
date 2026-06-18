@@ -111,6 +111,7 @@ optional voiceover). Audio layers are all optional per shot.
   "eleven_voice_id": "…", "eleven_model": "eleven_multilingual_v2", "language": "ro",
   "video_width": 480, "video_height": 832, "fps": 16,
   "output_fps": 60,                 // optional: interpolate the final video (off by default)
+  "interp_backend": "rife",         // "rife" (fast, GPU; needs env/setup_rife.sh) or "minterpolate" (slow, CPU)
   "music": null, "music_volume": 0.15,
   "trim_head": 2, "trim_tail": 2,   // edge frames trimmed off each clip
   "i2v_workflow": "workflows/wan22_i2v_fast_api.json",   // per-episode workflow override
