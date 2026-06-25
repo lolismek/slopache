@@ -20,6 +20,12 @@ episodes/*/final/
 *.wav
 *.mov
 
+# ...EXCEPT canonical character reference sheets: these are the no-LoRA identity
+# artifact (committed on purpose, like the LoRA file is stored on HF).
+!character/*/refs/
+!character/*/refs/*.png
+!character/*/refs/*.jpg
+
 # macOS
 .DS_Store
 

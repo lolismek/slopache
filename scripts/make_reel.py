@@ -103,13 +103,23 @@ def main():
     still_wf = spec.get("still_workflow", STILL_WF)
     s2v_wf = spec.get("s2v_workflow", S2V_WF)
     i2v_wf = spec.get("i2v_workflow", I2V_WF)
+    # No-LoRA identity: canonical reference image(s) (repo-relative) injected into
+    # every character still via gen_image --ref. Empty => LoRA/plain path, unchanged.
+    character_refs = [os.path.join(REPO, r) for r in spec.get("character_refs", [])]
+    for r in character_refs:
+        if not os.path.exists(r):
+            sys.exit(f"[reel] character_ref not found: {r}")
+
+    def uses_character(s, talking):
+        # Identity anchors (prefix text + reference images) apply to talking shots
+        # by default, and to any shot with "character": true.
+        return s.get("character", talking)
 
     def build_prompt(s, talking):
         # Persistent style + character anchors keep the look consistent across cuts;
-        # only the per-shot scene text changes. The character anchor is applied to
-        # talking shots by default, and to any shot with "character": true.
-        show_char = s.get("character", talking)
-        parts = [style_prefix, character_prefix if show_char else "", s["image_prompt"]]
+        # only the per-shot scene text changes.
+        parts = [style_prefix, character_prefix if uses_character(s, talking) else "",
+                 s["image_prompt"]]
         return ", ".join(p.strip(" ,") for p in parts if p and p.strip())
 
     def gen_voice(text, out):
@@ -145,7 +155,10 @@ def main():
         still_cmd = [PY, "scripts/gen_image.py", "--workflow", still_wf,
                      "--prompt", build_prompt(s, talking), "--out", f"shot{sid}",
                      "--width", sw, "--height", sh, "--seed", sid,
-                     "--outdir", os.path.join(ep, "stills")]
+                     "--server", args.server, "--outdir", os.path.join(ep, "stills")]
+        if character_refs and uses_character(s, talking):
+            for r in character_refs:
+                still_cmd += ["--ref", r]
         if args.still_steps:
             still_cmd += ["--steps", args.still_steps]
         run(still_cmd)

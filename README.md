@@ -153,9 +153,62 @@ each `image_prompt`, so the look and wardrobe stay consistent across cuts. See
 `character/prompt_recipe.md` for the full method (prop continuity, motion wording,
 the comedy formula).
 
+### Identity without a trained LoRA (FLUX.2 reference images)
+
+The grandma's face is locked by a trained LoRA. For a **different or one-off
+character you don't want to train**, anchor identity on **reference images**
+instead — FLUX.2 conditions each still on them natively. The only stage that
+changes is the still; S2V/I2V inherit the face from the still for free.
+
+Add two keys to `script.json` and drop the LoRA workflow:
+
+```jsonc
+{
+  "still_workflow": "workflows/flux2_txt2img_api.json",   // base FLUX.2, no LoRA
+  "character_refs": [                                      // canonical identity sheet
+    "character/<name>/refs/front.png",
+    "character/<name>/refs/threequarter.png",
+    "character/<name>/refs/smile.png"
+  ],
+  "character_prefix": "a young woman with long dark hair, …",  // light text anchor (refs do the locking)
+  "shots": [ … ]
+}
+```
+
+`make_reel.py` passes every `character_ref` to `gen_image.py --ref` on each
+**character** shot (talking shots, or any shot with `"character": true`); b-roll
+scenery gets none. Identity then comes from the references, not a trigger word.
+
+**Mint the reference set once, then freeze it** (it is the no-LoRA equivalent of
+the LoRA file — commit the PNGs):
+
+```bash
+# 1. pick a canonical front view (seed-search a text prompt, no refs)
+python scripts/gen_image.py --workflow workflows/flux2_txt2img_api.json \
+    --prompt "<style_prefix>, a young woman …, neutral front portrait" \
+    --out front --batch 4 --outdir character/<name>/refs
+# 2. (optional) add an expression view with --ref (front angle = clean single subject)
+python scripts/gen_image.py --workflow workflows/flux2_txt2img_api.json \
+    --ref character/<name>/refs/front.png \
+    --prompt "<style_prefix>, the same woman, warm smile, front view" \
+    --out smile --outdir character/<name>/refs
+```
+
+Keep alternate-view minting on the **front angle** (expression changes). Asking
+`--ref` for a *new angle* ("three-quarter view") tends to make FLUX.2 compose the
+reference + a second copy side-by-side — for turned angles, generate that view as
+its own txt2img instead. Identity locks fine from even 1–2 clean front views;
+the test scenes stay consistent regardless.
+
+Use a **fixed** anchor set for every shot — never chain off the previous shot's
+still (errors compound and the face drifts). `episodes/_template_noLoRA/` is a
+ready-to-edit starting point. A *recurring* character is still better served by a
+trained LoRA (the dataset builder in `character/` makes one); references are the
+zero-training path for new or occasional characters.
+
 ## Infrastructure
 
-Generation runs on a Brev **A100 80GB** instance (`stale-blush-orca`). Heavy data
+Generation runs on a Brev **A100 80GB** instance (`senior-salmon-yak`). Heavy data
 (ComfyUI, model weights, episode artifacts) lives on the box's `/ephemeral` volume,
 which is **wiped on deprovision** — this repo (code/config) plus HuggingFace
 (weights/LoRA) are the source of truth. Per-episode `stills/voice/sfx/clips/captions/final`
